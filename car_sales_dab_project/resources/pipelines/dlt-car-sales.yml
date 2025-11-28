@@ -1,0 +1,17 @@
+resources:
+  pipelines:
+    pipeline_dlt_car_sales:
+      name: dlt-car-sales
+      configuration:
+        source: /Volumes/dab_car_sales_dev/default/carsales
+      libraries:
+        - glob:
+            include: ../../src/pipelines/dlt-car-sales/transformations/**
+      schema: ${var.schema}
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../../src/pipelines/dlt-car-sales
